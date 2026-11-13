@@ -10,7 +10,9 @@ import {
 
 import "./index.css";
 import type { Route } from "./+types/root";
-import Header from "./components/header";
+import { BackToTop } from "./components/back-to-top";
+import { SiteFooter } from "./components/site-footer";
+import { SiteHeader } from "./components/site-header";
 import { ThemeProvider } from "./components/theme-provider";
 
 export const links: Route.LinksFunction = () => [
@@ -18,13 +20,13 @@ export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Alexandria:wght@300..700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap",
   },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,33 +50,37 @@ export default function App() {
       disableTransitionOnChange
       storageKey="vite-ui-theme"
     >
-      <div className="grid grid-rows-[auto_1fr] h-svh">
-        <Header />
-        <Outlet />
+      <div className="flex min-h-svh flex-col bg-background">
+        <SiteHeader />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <SiteFooter />
       </div>
-      <Toaster richColors />
+      <BackToTop />
+      <Toaster richColors position="top-center" />
     </ThemeProvider>
   );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
+  let message = "حدث خطأ ما";
+  let details = "تعذّر عرض الصفحة، الرجاء المحاولة مرة أخرى.";
   let stack: string | undefined;
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
+    message = error.status === 404 ? "٤٠٤" : "خطأ";
     details =
-      error.status === 404 ? "The requested page could not be found." : error.statusText || details;
+      error.status === 404 ? "الصفحة المطلوبة غير موجودة." : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
+    <main className="container mx-auto p-4 pt-16">
+      <h1 className="font-display text-2xl font-bold">{message}</h1>
+      <p className="mt-2 text-muted-foreground">{details}</p>
       {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
+        <pre className="mt-4 w-full overflow-x-auto p-4 text-xs" dir="ltr">
           <code>{stack}</code>
         </pre>
       )}

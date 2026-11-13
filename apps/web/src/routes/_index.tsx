@@ -1,34 +1,34 @@
+import { About } from "@/components/sections/about";
+import { Approach } from "@/components/sections/approach";
+import { Contact } from "@/components/sections/contact";
+import { Faq } from "@/components/sections/faq";
+import { Hero } from "@/components/sections/hero";
+import { Impact } from "@/components/sections/impact";
+import { Services } from "@/components/sections/services";
+
 import type { Route } from "./+types/_index";
 
-const TITLE_TEXT = `
- ██████╗ ███████╗████████╗████████╗███████╗██████╗
- ██╔══██╗██╔════╝╚══██╔══╝╚══██╔══╝██╔════╝██╔══██╗
- ██████╔╝█████╗     ██║      ██║   █████╗  ██████╔╝
- ██╔══██╗██╔══╝     ██║      ██║   ██╔══╝  ██╔══██╗
- ██████╔╝███████╗   ██║      ██║   ███████╗██║  ██║
- ╚═════╝ ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝
-
- ████████╗    ███████╗████████╗ █████╗  ██████╗██╗  ██╗
- ╚══██╔══╝    ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
-    ██║       ███████╗   ██║   ███████║██║     █████╔╝
-    ██║       ╚════██║   ██║   ██╔══██║██║     ██╔═██╗
-    ██║       ███████║   ██║   ██║  ██║╚██████╗██║  ██╗
-    ╚═╝       ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
- `;
-
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "nura" }, { name: "description", content: "nura is a web application" }];
+  return [
+    { title: "نُورا | استوديو للإبداع والابتكار" },
+    {
+      name: "description",
+      content:
+        "نُورا استوديو للإبداع والابتكار: من الفكرة تبدأ الحكاية، وبالإبداع نصنع الأثر. هويات بصرية وتجارب رقمية تصنع فرقاً حقيقياً.",
+    },
+  ];
 }
 
 export default function Home() {
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-2">
-      <pre className="overflow-x-auto font-mono text-sm">{TITLE_TEXT}</pre>
-      <div className="grid gap-6">
-        <section className="rounded-lg border p-4">
-          <h2 className="mb-2 font-medium">API Status</h2>
-        </section>
-      </div>
-    </div>
+    <>
+      <Hero />
+      <About />
+      <Services />
+      <Approach />
+      <Impact />
+      <Faq />
+      <Contact />
+    </>
   );
 }

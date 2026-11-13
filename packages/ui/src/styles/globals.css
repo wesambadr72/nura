@@ -42,24 +42,24 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.87 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: #252b2a;
+  --foreground: #f5f6fa;
+  --card: #2e3534;
+  --card-foreground: #f5f6fa;
+  --popover: #2e3534;
+  --popover-foreground: #f5f6fa;
+  --primary: #a746a6;
+  --primary-foreground: #f5f6fa;
+  --secondary: #353d3c;
+  --secondary-foreground: #f5f6fa;
+  --muted: #2e3534;
+  --muted-foreground: #a6aaa9;
+  --accent: #353d3c;
+  --accent-foreground: #f5f6fa;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: #a746a6;
   --chart-1: oklch(0.809 0.105 251.813);
   --chart-2: oklch(0.623 0.214 259.815);
   --chart-3: oklch(0.546 0.245 262.881);
@@ -76,7 +76,14 @@
 }
 
 @theme inline {
-  --font-sans: "Inter Variable", sans-serif;
+  --font-sans: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Alexandria", ui-sans-serif, system-ui, sans-serif;
+  --color-charcoal: #252b2a;
+  --color-charcoal-soft: #2e3534;
+  --color-brand: #a746a6;
+  --color-brand-green: #25c96d;
+  --color-soft-white: #f5f6fa;
+  --color-muted-gray: #a6aaa9;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -121,10 +128,74 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
   body {
     @apply font-sans bg-background text-foreground;
   }
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+/* عنوان بخط العرض (Alexandria) — مستخدم في مكوّنات @nura/ui */
+.cn-font-heading {
+  font-family: var(--font-display);
+}
+
+/* حركة التقارب المميزة للأشكال الثلاثة */
+@keyframes nura-converge {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(var(--nura-dx, 0px), var(--nura-dy, 0px), 0) scale(0.97);
+  }
+}
+
+@keyframes nura-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nura-reveal {
+  opacity: 0;
+}
+
+.nura-reveal.is-visible {
+  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    @apply font-sans;
+    scroll-behavior: auto;
+  }
+  .nura-reveal,
+  .nura-reveal.is-visible {
+    opacity: 1;
+    animation: none;
+  }
+  .nura-anim,
+  .nura-anim * {
+    animation: none !important;
   }
 }
