@@ -1,0 +1,3 @@
+{
+  "extends": "@nura/config/tsconfig.base.json"
+}
