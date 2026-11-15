@@ -3,7 +3,8 @@ import tailwindcss from "@tailwindcss/vite";
 import { varlockVitePlugin } from "@varlock/vite-integration";
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === "build" ? "/nura/" : "/",
   resolve: {
     tsconfigPaths: true,
   },
@@ -11,4 +12,4 @@ export default defineConfig({
     entries: ["src/**/*.{ts,tsx}"],
   },
   plugins: [varlockVitePlugin({ ssrInjectMode: "auto-load" }), tailwindcss(), reactRouter()],
-});
+}));

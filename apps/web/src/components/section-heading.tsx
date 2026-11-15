@@ -7,7 +7,7 @@ export function SectionHeading({
   align = "start",
   className,
 }: {
-  label: string;
+  label?: string;
   title: string;
   description?: string;
   align?: "start" | "center";

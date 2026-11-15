@@ -23,7 +23,7 @@ export function About() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col gap-8">
             <Reveal>
-              <SectionHeading label="من نحن" title="نؤمن أن الأفكار العظيمة تبدأ من نقطة التقاء." />
+              <SectionHeading label="من نحن" title="نؤمن أن الأفكار العظيمة تبدأ من نقطة الإلتقاء." />
             </Reveal>
 
             <div className="grid gap-5 sm:grid-cols-2">

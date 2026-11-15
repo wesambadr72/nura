@@ -16,6 +16,7 @@ import { SiteHeader } from "./components/site-header";
 import { ThemeProvider } from "./components/theme-provider";
 
 export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico` },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {

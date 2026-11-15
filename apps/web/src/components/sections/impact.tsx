@@ -43,7 +43,7 @@ export function Impact() {
             <Reveal
               key={stat.label}
               delay={index * 90}
-              className="border-border/50 lg:[&:not(:first-child)]:border-s"
+              className="border-border/50 lg:not-first:border-s"
             >
               <Stat value={stat.value} suffix={stat.suffix} label={stat.label} />
             </Reveal>

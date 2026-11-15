@@ -70,7 +70,11 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
           aria-label="نُورا — الرئيسية"
         >
-          <img src="/Symbol.webp" alt="نُورا" className="h-8 w-auto object-contain" />
+          <img
+            src={`${import.meta.env.BASE_URL}Symbol.webp`}
+            alt="نُورا"
+            className="h-8 w-auto object-contain"
+          />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="التنقل الرئيسي">

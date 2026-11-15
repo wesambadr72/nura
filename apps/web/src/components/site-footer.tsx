@@ -21,7 +21,11 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div className="flex flex-col gap-5">
-            <img src="/Symbol.webp" alt="نُورا" className="h-9 w-auto object-contain" />
+            <img
+              src={`${import.meta.env.BASE_URL}Symbol.webp`}
+              alt="نُورا"
+              className="h-9 w-auto object-contain"
+            />
             <p className="max-w-sm text-sm/relaxed text-muted-foreground">
               استوديو للإبداع والابتكار، يحوّل الأفكار الطموحة إلى هويات وتجارب رقمية تترك أثراً
               حقيقياً. من الفكرة تبدأ الحكاية، وبالإبداع نصنع الأثر.
